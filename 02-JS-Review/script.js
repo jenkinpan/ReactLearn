@@ -149,4 +149,103 @@ book;
 
 // const title = book.title;
 // const author = book.author;
-const { title, author, genres, hasMovieAdaptation } = book;
+const { title, author, pages, genres, hasMovieAdaptation, publicationDate } =
+  book;
+console.log(title, author, genres);
+
+// const primaryGenre = genres[0];
+// const sendaryGenre = genres[1];
+
+const [primaryGenre, sendaryGenre, ...otherGenres] = genres;
+// 将在genres中剩下的数组数据，包含在otherGenres中，将其打包为一个数组Array。
+// ! And the rest operator "..." must in the end of the deconsruction pattern.具体看下面的输出
+console.log(primaryGenre, sendaryGenre, otherGenres);
+
+// -------spread operator with Array
+const newGenres = [...genres, "epic fantasy"];
+// * 这里如果没有加上"..."的话，会出现genres数组和newGenres数组进行嵌套的情形。
+// * 加上...的话就是将genres数组里面的数据一一地写入到新数组newGenres里面去，就不会存在嵌套的情况。
+
+newGenres;
+
+// ------spread operator with object
+const updateBook = {
+  ...book,
+  // 添加新的属性new property⬇️
+  moviePublicationDate: "2021-12-19",
+
+  // 重写存在的属性Overriding an exiting property
+  pages: 1210,
+};
+
+updateBook;
+
+// ! Arrow Function
+// ! 箭头定义函数
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+// ! const getYear =(str) => str.split("-")[0];和下面一样
+const getYear = (str) => {
+  return str.split("-")[0];
+};
+
+// ! 模板字符串
+const summary = `${title}, a ${pages}-page lonng book, was written by ${author} and published in ${getYear(
+  publicationDate
+)}. And this book has ${
+  hasMovieAdaptation ? "" : "not"
+} been adapted as a movie.`;
+
+summary;
+
+// ! 三元运算符
+// ! ternary operator
+const pageRanges = pages > 1000 ? "over a thousand" : "less than 1000 pages";
+// ! "?"前为判断条件， "?"后“为true时的输出”：“为false时的输出”
+pageRanges;
+
+console.log(`This book has ${pageRanges} pages.`);
+
+console.log(getYear(publicationDate));
+
+// ! 逻辑与 ‘&&’
+console.log(true && "some string");
+console.log(false && "some string");
+// * 只有“&&”操作符前为真时，才会显示其后的内容
+console.log(hasMovieAdaptation && "This book has a movie.");
+
+// * 为假false的有0, null, '', undefined
+console.log("jenkin" && "some string");
+console.log(0 && "some string");
+
+// ! 逻辑或 “||”
+console.log(true || "some string");
+console.log(false || "Some string");
+// * “||”前为真时，返回前值，否者返回后值。
+
+console.log(book.translations.spanish);
+const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
+spanishTranslation;
+
+// "||"在值为0，null,undefined, "" 时都会被认为时false.
+console.log(book.reviews.librarything.reviewsCount);
+const countWrong = book.reviews.librarything.reviewsCount || "no data";
+countWrong;
+
+// ! 空值合并运算符 “??”
+// * "??"只有当值为null, undefined时才会被认定为false.
+// * 空值合并运算符（??）是一个逻辑运算符，当左侧的操作数为 null 或者 undefined 时，返回其右侧操作数，否则返回左侧操作数。
+const count = book.reviews.librarything.reviewsCount ?? "no data";
+count;
+
+// ! optional chain 可选属性链
+// * 在可能不存在的属性后加上?，就可以选择性的访问，如果不存在就不继续访问剩下的了,只会变成undefined
+// * 这时就可以使用合并运算符进行选择了
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount ?? 0;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+console.log(getTotalReviewCount(book));
