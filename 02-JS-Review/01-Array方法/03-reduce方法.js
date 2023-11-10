@@ -51,8 +51,9 @@ const data = [
       goodreads: {
         rating: 4.16,
         ratingsCount: 11663,
-        reviewsCount: 812, }, librarything: { rating: 4.13, ratingsCount: 2434, reviewsCount: 0,
+        reviewsCount: 812,
       },
+      librarything: { rating: 4.13, ratingsCount: 2434, reviewsCount: 0 },
     },
   },
   {
@@ -154,6 +155,5 @@ const sum = arr.reduce((acc, cur) => acc + cur, 0);
 console.log(sum); // 15
 
 // * -- 计算所有书籍的总页数 --
-const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
 console.log(pagesAllBooks);
-
