@@ -168,4 +168,4 @@ const essentialData = books.map((book) => ({
   reviewsCcount: getTotalReviewCount(book),
 }));
 
-essentialData;
+console.log(essentialData);
