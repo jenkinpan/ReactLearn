@@ -155,6 +155,13 @@ const newBook = {
 const booksAfterAdd = [...books, newBook];
 booksAfterAdd;
 
-// 2) Delete book object from array by id 通过id删除数组中的书籍对象
+// 2) Delete book object from array by filter method 通过filter方法从数组中删除书籍对象
 const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+// !== 严格不等于 返回值为true的元素会被保留，返回值为false的元素会被删除
 console.log(booksAfterDelete);
+
+// 3) Update book object from array by map method 通过map方法更新数组中的书籍对象
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 1210 } : book
+);
+booksAfterUpdate;
