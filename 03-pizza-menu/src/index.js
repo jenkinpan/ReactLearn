@@ -57,11 +57,7 @@ function App() {
 }
 
 function Header() {
-  return (
-    <h1 style={{ textAlign: "center", fontSize: "18px" }}>
-      Fast React Pizza Co.
-    </h1>
-  );
+  return <h1>Fast React Pizza Co.</h1>;
 }
 
 function Menu() {
@@ -80,13 +76,14 @@ function Footer() {
   const hour = new Date().getHours();
   const openHour = 12;
   const closeHour = 22;
+  // 营业时间大于开门时间且小于关门时间
   const isOpen = hour > openHour && hour < closeHour;
   console.log(isOpen);
   // if (isOpen) alert("We're currently open.");
   // else alert("We're currently closed.");
 
   return (
-    <footer style={{ textAlign: "center" }}>
+    <footer>
       {new Date().toLocaleTimeString()} We're currently{" "}
       {isOpen ? "open" : "closed"}.
     </footer>
