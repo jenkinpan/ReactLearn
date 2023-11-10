@@ -51,12 +51,7 @@ const data = [
       goodreads: {
         rating: 4.16,
         ratingsCount: 11663,
-        reviewsCount: 812,
-      },
-      librarything: {
-        rating: 4.13,
-        ratingsCount: 2434,
-        reviewsCount: 0,
+        reviewsCount: 812, }, librarything: { rating: 4.13, ratingsCount: 2434, reviewsCount: 0,
       },
     },
   },
@@ -145,23 +140,20 @@ function getBook(id) {
 
 const books = getBooks();
 
-// ! filter方法 用于过滤数组中的元素
-// 语法：arr.filter(callback(element[, index[, array]])[, thisArg])
-// 参数：callback 用来测试数组的每个元素的函数。返回 true 表示该元素通过测试，保留该元素，false 则不保留。它接受以下三个参数：
-// element 数组中当前正在处理的元素。
-// index 可选 数组中当前正在处理的元素的索引。
-// array 可选 filter 方法被调用的数组。
+// ! reduce方法 是一个累加器，它可以将数组中的每个元素（从左到右）将其值汇总为单个值。
+/* 语法：arr.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])	
+accumulator：累加器累加回调的返回值; 它是上一次调用回调时返回的累积值，或initialValue（如下所示）。
+currentValue：数组中正在处理的元素。
+index：数组中正在处理的当前元素的索引。 如果提供了initialValue，则索引号为0，否则索引为1。
+array：调用reduce()的数组。
+initialValue：可选。 用作第一个调用回调的第一个参数的值。 如果没有提供初始值，则将使用数组中的第一个元素。 在没有初始值的空数组上调用reduce将报错。
+返回值：函数累计处理的结果。*/
+// * 例子：数组求和
+const arr = [1, 2, 3, 4, 5];
+const sum = arr.reduce((acc, cur) => acc + cur, 0);
+console.log(sum); // 15
 
-// * 这里用来过滤出pages大于500的书籍且有电影改编的书籍
-const longBooksWithMovie = books
-  .filter((book) => book.pages > 500)
-  .filter((book) => book.hasMovieAdaptation);
+// * -- 计算所有书籍的总页数 --
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+console.log(pagesAllBooks);
 
-console.log(longBooksWithMovie);
-
-// * 过滤出有adventure类型的书籍，并且只返回书名
-const adventureBooks = books
-  .filter((books) => books.genres.includes("adventure"))
-  .map((book) => book.title);
-
-console.log(adventureBooks);
