@@ -1,17 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { StrictMode } from "react";
+import ReactDOM from "react-dom/client";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+function App() {
+  return <h1>Hello React!</h1>;
+}
+
+// render method after React 17
+const root = ReactDOM.createRoot(document.getElementById("root"));
+// 严格模式会渲染两次，第一次是为了检查是否有副作用，第二次才是真正的渲染。并且会检查不安全的生命周期方法和过时的ref字符串API。以及一些过时的findDOMNode方法。
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <App />
-  </React.StrictMode>
+  </StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// render method before React 17
+// ReactDOM.render(<App />, document.getElementById("root"));
