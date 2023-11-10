@@ -53,7 +53,11 @@ const data = [
         ratingsCount: 11663,
         reviewsCount: 812,
       },
-      librarything: { rating: 4.13, ratingsCount: 2434, reviewsCount: 0 },
+      librarything: {
+        rating: 4.13,
+        ratingsCount: 2434,
+        reviewsCount: 0,
+      },
     },
   },
   {
