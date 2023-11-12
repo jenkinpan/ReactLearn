@@ -13,6 +13,7 @@ function App() {
   function handlePrevious() {
     if (step > 1) setStep((s) => s - 1);
   }
+  // ! 为后续更新和维护的需求，我们通常对state更新时使用回调函数的形式，而不是直接传入新的值。
 
   function handleNext() {
     if (step < 3) setStep((s) => s + 1);
