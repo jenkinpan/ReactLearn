@@ -37,59 +37,60 @@ const skills = [
 
 function App() {
   return (
-    <div className="card">
-      <Avatar />
-      <div className="data">
-        <Intro />
-        {/* Should contain one Skill component
+    <body>
+      <div className="card">
+        <Avatar />
+        <div className="data">
+          <Intro />
+          {/* Should contain one Skill component
         for each web dev skill that you have,
-        customized with props */}
-        <SkillList />
+      customized with props */}
+          <SkillList />
+        </div>
       </div>
-    </div>
+    </body>
   );
 }
 
 function Avatar() {
-  return <img className="avatar" src="jonas.jpeg" alt="Jonas Schmedtmann" />;
+  return <img className="avatar" src="photo.jpg" alt="Jenkin pan" />;
 }
 
 function Intro() {
   return (
-    <div>
-      <h1>Jonas Schmedtmann</h1>
+    <>
+      <h1>Jenkin Pan</h1>
       <p>
         Full-stack web developer and teacher at Udemy. When not coding or
         preparing a course, I like to play board games, to cook (and eat), or to
         just enjoy the Portuguese sun at the beach.
       </p>
-    </div>
+    </>
   );
 }
 
 function SkillList() {
   return (
-    <div className="skill-list">
+    <ul className="skill-list">
       {skills.map((skill) => (
         <Skill skill={skill.skill} color={skill.color} level={skill.level} />
       ))}
-    </div>
+    </ul>
   );
 }
 
 function Skill({ skill, color, level }) {
   return (
-    <div className="skill" style={{ backgroundColor: color }}>
+    <li className="skill" style={{ backgroundColor: color }}>
       <span>{skill}</span>
       <span>
-        {level === "beginner" && "👶"}
-        {level === "intermediate" && "👍"}
         {level === "advanced" && "💪"}
+        {level === "intermediate" && "👌"}
+        {level === "beginner" && "👶"}
       </span>
-    </div>
+    </li>
   );
 }
-
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
