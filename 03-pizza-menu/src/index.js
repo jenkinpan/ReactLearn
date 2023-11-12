@@ -113,6 +113,7 @@ function Menu() {
 }
 
 function Pizza({ pizzaObj }) {
+  // use destructuring to get the props
   console.log(pizzaObj);
 
   if (pizzaObj.soldOut) return null;
