@@ -6,7 +6,7 @@ const messages = [
   "Invest your new income 🤑",
 ];
 
-function App() {
+export default function App() {
   const [step, setStep] = useState(1);
   const [isOPen, setIsOpen] = useState(true);
 
@@ -19,6 +19,21 @@ function App() {
     if (step < 3) setStep((s) => s + 1);
   }
 
+  // 提取出Number组件，减少重复的代码
+  const Number = ({ step, number }) => (
+    <div className={step >= number ? "active" : ""}>{number}</div>
+  );
+
+  // 提取出Button组件，减少重复的代码
+  const Button = ({ onClick, children }) => (
+    <button style={buttonStyle} onClick={onClick}>
+      {children}
+    </button>
+  );
+
+  // 将样式对象提取到组件外部，避免在每次渲染时都创建新的对象
+  const buttonStyle = { backgroundColor: "#7950f2", color: "#fff" };
+
   return (
     <>
       <button className="close" onClick={() => setIsOpen((is) => !is)}>
@@ -28,9 +43,9 @@ function App() {
       {isOPen && (
         <div className="steps">
           <div className="numbers">
-            <div className={step >= 1 ? "active" : ""}>1</div>
-            <div className={step >= 2 ? "active" : ""}>2</div>
-            <div className={step >= 3 ? "active" : ""}>3</div>
+            <Number step={step} number={1} />
+            <Number step={step} number={2} />
+            <Number step={step} number={3} />
           </div>
 
           <p className="message">
@@ -38,23 +53,11 @@ function App() {
           </p>
 
           <div className="buttons">
-            <button
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
-              onClick={handlePrevious}
-            >
-              Previous
-            </button>
-            <button
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
-              onClick={handleNext}
-            >
-              Next
-            </button>
+            <Button onClick={handlePrevious}>Previous</Button>
+            <Button onClick={handleNext}>Next</Button>
           </div>
         </div>
       )}
     </>
   );
 }
-
-export default App;
