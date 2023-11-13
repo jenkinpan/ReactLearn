@@ -48,7 +48,9 @@ export default function App() {
           <span>{date.toDateString()}</span>
         </p>
         {step === 1 && count === 0 ? null : (
-          <button onClick={handleReset}>Reset</button>
+          <button className="reset" onClick={handleReset}>
+            Reset
+          </button>
         )}
       </div>
     );
