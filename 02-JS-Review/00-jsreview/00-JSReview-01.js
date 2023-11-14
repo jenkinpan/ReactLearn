@@ -162,6 +162,12 @@ const [primaryGenre, sendaryGenre, ...otherGenres] = genres;
 console.log(primaryGenre, sendaryGenre, otherGenres);
 
 // -------spread operator with Array
+// * spread operator "..." 展开运算符
+// * 用于将数组或者对象打散，分别取出数组或者对象中的数据。
+// * 用于数组时，将数组中的数据打散，分别取出数组中的数据。
+// * 用于对象时，将对象中的数据打散，分别取出对象中的数据。
+// * 用于对象时，如果对象中的数据是嵌套的，那么打散后的数据也是嵌套的。
+// * 用于对象时，如果对象中的数据是嵌套的，那么打散后的数据也是嵌套的。
 const newGenres = [...genres, "epic fantasy"];
 // * 这里如果没有加上"..."的话，会出现genres数组和newGenres数组进行嵌套的情形。
 // * 加上...的话就是将genres数组里面的数据一一地写入到新数组newGenres里面去，就不会存在嵌套的情况。
