@@ -57,9 +57,7 @@ function Steps() {
             <Number step={step} number={3} />
           </div>
 
-          <p className="message">
-            Step{step}: {messages[step - 1]}
-          </p>
+          <StepMessage step={step}>{messages[step - 1]}</StepMessage>
 
           <div className="buttons">
             <Button onClick={handlePrevious}>
@@ -72,5 +70,14 @@ function Steps() {
         </div>
       )}
     </>
+  );
+}
+
+function StepMessage({ step, children }) {
+  return (
+    <div className="message">
+      <h3>Step:{step}</h3>
+      {children}
+    </div>
   );
 }
