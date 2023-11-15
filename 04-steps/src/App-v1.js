@@ -7,15 +7,6 @@ const messages = [
 ];
 
 export default function App() {
-  return (
-    <div>
-      <Steps />
-      {/* <Steps /> */}
-    </div>
-  );
-}
-
-function Steps() {
   const [step, setStep] = useState(1);
   const [isOPen, setIsOpen] = useState(true);
 
@@ -62,12 +53,8 @@ function Steps() {
           </p>
 
           <div className="buttons">
-            <Button onClick={handlePrevious}>
-              <span>⬅️</span>Previous
-            </Button>
-            <Button onClick={handleNext}>
-              Next<span>➡️</span>
-            </Button>
+            <Button onClick={handlePrevious}>Previous</Button>
+            <Button onClick={handleNext}>Next</Button>
           </div>
         </div>
       )}
