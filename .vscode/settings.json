@@ -1,4 +1,6 @@
 {
   "git.ignoreLimitWarning": true,
-  "cSpell.showAutocompleteSuggestions": true
+  "cSpell.showAutocompleteSuggestions": true,
+  "emmet.useInlineCompletions": false,
+  "editor.inlineSuggest.suppressSuggestions": false
 }
