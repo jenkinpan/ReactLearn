@@ -2,5 +2,9 @@
   "git.ignoreLimitWarning": true,
   "cSpell.showAutocompleteSuggestions": true,
   "emmet.useInlineCompletions": false,
-  "editor.inlineSuggest.suppressSuggestions": false
+  "editor.inlineSuggest.suppressSuggestions": false,
+  "editor.quickSuggestions": {
+    "comments": "on",
+    "strings": "on"
+  }
 }
