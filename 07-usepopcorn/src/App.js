@@ -316,6 +316,25 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     onCloseMovie();
   }
 
+  // ! 按下ESC键时关闭电影详情页
+  useEffect(
+    function () {
+      function callback(e) {
+        if (e.code === "Escape") {
+          onCloseMovie();
+        }
+      }
+
+      document.addEventListener("keydown", callback);
+
+      return function () {
+        document.removeEventListener("keydown", callback);
+      };
+    },
+    [onCloseMovie]
+  );
+
+  // ! 获取电影详情
   useEffect(
     function () {
       async function getMovieDetails() {
@@ -332,6 +351,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     [selectedId]
   );
 
+  // ! 打开电影详情页时，将电影标题添加到浏览器标题中
   useEffect(
     function () {
       if (!title) return;
